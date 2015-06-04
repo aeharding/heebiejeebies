@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /': 'HomeController.index',
+  // 'get /': 'HomeController.index',
 
   /***************************************************************************
   *                                                                          *
@@ -43,14 +43,26 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /login': 'AuthController.login',
+
+
+  // AUTH
+  'get /': 'AuthController.login', // logging in on homepage
   'get /logout': 'AuthController.logout',
   // 'get /register': 'AuthController.register',
-
   // 'post /auth/local': 'AuthController.callback',
   // 'post /auth/local/:action': 'AuthController.callback',
 
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
-  'get /auth/:provider/:action': 'AuthController.callback'
+  'get /auth/:provider/:action': 'AuthController.callback',
+
+
+  // CARD
+  'get /c/create': 'CardController.createPrompt',
+  'post /c': 'CardController.create',
+
+  'get /c': 'CardController.all',
+  'get /c/:uid': 'CardController.one',
+
+  'get /eula': 'StaticViewController.eula'
 };

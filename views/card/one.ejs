@@ -1,0 +1,65 @@
+<div class="card-wrap">
+  <div class="card-front">
+    <header><span class='card-text' id="card-top"><%= card.top %></span></header>
+    <img src="/images/smiley/3.png" alt="">
+    <footer><span class='card-text' id="card-bottom"><%= card.bottom %></span></footer>
+  </div>
+
+  <div class="page-break">&nbsp;</div>
+
+  <div class="card-back">
+    <img src="/images/logo.png" class="logo" alt="">
+    <img src="/images/subtitle.png" class="subtitle" alt="">
+  </div>
+</div>
+
+<div class="print-hidden">
+  <div class="text-center">
+    <p>Created by <%= author.displayName %> <abbr title="<%= card.createdAt %>" class="timeago"></abbr></p>
+    <button class="button button-primary print" onclick="window.print();"><i class="fa fa-print"></i> Print this card</button>
+    <br><br>
+    <a class="button button-twitter" rel="nofollow"
+        href="http://twitter.com/"
+        onclick="popUp=window.open(
+            'http://twitter.com/intent/tweet?text=Check out this heebie jeebies card! @zipwhaa - http://localhost:1337/c/<%= card.uid %>',
+            'popupwindow',
+            'scrollbars=yes,width=800,height=400');
+        popUp.focus();
+        return false">
+        <i class="fa fa-twitter"></i> share on twitter
+    </a>
+
+    <a class="button button-facebook" rel="nofollow"
+        href="http://www.facebook.com/"
+        onclick="popUp=window.open(
+            'http://www.facebook.com/sharer.php?u=http://localhost:1337/c/<%= card.uid %>',
+            'popupwindow',
+            'scrollbars=yes,width=800,height=400');
+        popUp.focus();
+        return false">
+        <i class="fa fa-facebook"></i> share on facebook
+    </a>
+
+    <a class="button button-google-plus" rel="nofollow"
+        href="http://www.plus.google.com/"
+        onclick="popUp=window.open(
+            'https://plus.google.com/share?url=http://localhost:1337/c/<%= card.uid %>',
+            'popupwindow',
+            'scrollbars=yes,width=800,height=400');
+        popUp.focus();
+        return false">
+        <i class="fa fa-google-plus"></i> share on google+
+    </a>
+
+    <a class="button button-email" rel="nofollow"
+        href="mailto:?subject=My Heebie Jeebies card&amp;
+        body=Check out this card: http://localhost:1337/c/<%= card.uid %>">
+        share via email
+    </a>
+
+    <br>
+    <small>Print letter &amp; double-sided for best results.</small>
+
+  </div>
+
+</div>

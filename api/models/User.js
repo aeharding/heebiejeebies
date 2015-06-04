@@ -4,9 +4,10 @@ var User = {
 
   attributes: {
     username    : { type: 'string', unique: true },
-    displayName : { type: 'string', unique: true },
+    displayName : { type: 'string' },
     email       : { type: 'email',  unique: true },
-    passports   : { collection: 'Passport', via: 'user' }
+    passports   : { collection: 'Passport', via: 'user' },
+    cards       : { collection: 'Card', via: 'author' }
   }
 };
 

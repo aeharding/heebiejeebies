@@ -42,6 +42,7 @@ var AuthController = {
 
       providers[key] = {
         name: strategies[key].name
+      , className: strategies[key].className
       , slug: key
       };
     });
@@ -151,7 +152,7 @@ var AuthController = {
           res.redirect('back');
           break;
         default:
-          res.redirect('/login');
+          res.redirect('/');
       }
     }
 

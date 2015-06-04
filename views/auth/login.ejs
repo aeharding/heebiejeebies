@@ -1,19 +1,24 @@
-<% if (errors) {%>
-  <% errors.forEach(function (error) { %>
-    <%= __(error) %>
-  <% }) %>
+<h2>Welcome!</h2>
+<p>This site is for creating your own custom cards for Heebie Jeebies. You can share the cards you create with others, or print them out to add to your card collection. Login below to get started creating your cards!</p>
+
+
+
+<% if (errors && errors.length) {%>
+  <div class="alert">
+    <% errors.forEach(function (error) { %>
+      <span><%= __(error) %></span>
+    <% }) %>
+  </div>
+  <br>
 <% } %>
 
-<form role="form" action="/auth/local" method="post">
-  <input type="text" name="identifier" placeholder="Username or Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Sign in</button>
-</form>
 
-<% if (Object.keys(providers).length) {%>
-  <h4>You can also use one of these...</h4>
-
-  <% Object.keys(providers).forEach(function (key) { %>
-    <a href="/auth/<%= providers[key].slug %>" role="button"><%= providers[key].name %></a>
-  <% }) %>
+<% if (!user) {%>
+  <% if (Object.keys(providers).length) {%>
+    <% Object.keys(providers).forEach(function (key) { %>
+      <a class="button button-<%= providers[key].className %>" href="/auth/<%= providers[key].slug %>" role="button"><i class='fa fa-<%= providers[key].className %>'></i> <%= providers[key].name %></a>
+    <% }) %>
+  <% } %>
+<% } else { %>
+  <%- user.displayName %>
 <% } %>

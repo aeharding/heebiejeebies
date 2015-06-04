@@ -1,0 +1,23 @@
+<h1>Create a card</h1>
+
+<div class="card-wrap">
+  <div class="card-front">
+    <header><span class='card-text' id="card-top"></span></header>
+    <img src="/images/smiley/3.png" alt="">
+    <footer><span class='card-text' id="card-bottom"></span></footer>
+  </div>
+
+  <div class="page-break">&nbsp;</div>
+
+  <div class="card-back">
+    <img src="/images/logo.png" class="logo" alt="">
+    <img src="/images/subtitle.png" class="subtitle" alt="">
+  </div>
+</div>
+
+<form role="form" action="/c" method="post">
+  <textarea type="text" name="top" placeholder="Top text" id="text-top" required></textarea>
+  <input type="number" name="smiley" placeholder="Smiley #">
+  <textarea type="text" name="bottom" placeholder="Bottom text" id="text-bottom" required></textarea>
+  <button type="submit">Create it</button>
+</form>

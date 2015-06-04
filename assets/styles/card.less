@@ -1,0 +1,145 @@
+.card-wrap {
+  text-align: center;
+}
+
+@card-width: 2.25in;
+@card-height: 3.5in;
+
+.Card (@name, @width, @height) {
+  .@{name}-front,
+  .@{name}-back {
+    width: 2.25in;
+    height: 3.5in;
+    border-radius: 0.1in;
+    position: relative;
+    display: inline-block;
+
+  }
+
+  .@{name}-front {
+    border: 0.1in solid black;
+
+    header, footer {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      height: 0.9in;
+      margin: 0.1in;
+      text-align: center;
+
+      .card-text {
+        overflow: hidden;
+
+        // card.js auto font resize bug for Raavi font. Keep from bottom being clipped
+        padding-bottom: 7px;
+        margin-bottom: -7px;
+        
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        max-height: 100%;
+      }
+    }
+
+    header {
+      font-family: 'HoboStd';
+      top: 0;
+      font-size: 0.26in;
+      font-variant: small-caps;
+
+      .card-text {
+        line-height: 1.2em;
+      }
+    }
+    footer {
+      font-family: 'Raavi';
+      bottom: 0;
+      font-size: 0.21in;
+
+      .card-text {
+        line-height: 1em;
+      }
+    }
+
+
+
+    img {
+      width: 1in;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+  }
+
+  .@{name}-back {
+    background-color: #3CAB4F;
+    box-shadow: inset 0 0 0 1000px #3CAB4F; // This forces printing a background :D
+
+    .logo {
+      width: 2.3in;
+      position: absolute;
+      left: 50%;
+      top: 35%;
+      transform: translate(-50%, -35%);
+    }
+    .subtitle {
+      width: 2in;
+      position: absolute;
+      left: 50%;
+      top: 80%;
+      transform: translate(-50%, -80%);
+    }
+  }
+}
+
+.Card(card, @card-width, @card-height);
+
+.page-break {
+  display: none;
+}
+
+
+@media print {
+  * {
+    float: none !important;
+  }
+  .card-wrap {
+    text-align: left;
+  }
+  .card-back {
+    right: 0 !important;
+    position: absolute !important;
+  }
+  .table-container, .table-block, .container {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+  }
+  .container {
+    > footer {
+      display: none;
+    }
+  }
+  .header-container {
+    display: none !important;
+  }
+  main {
+    margin: 0;
+  }
+  .page-break {
+    page-break-after: always;
+    display: block;
+  }
+  .print-hidden {
+    display: none;
+  }
+}
+@page {
+  margin: 0.5in;
+  size: letter portrait;
+}

@@ -25,6 +25,7 @@ module.exports.passport = {
 
   twitter: {
     name: 'Twitter',
+    className: 'twitter',
     protocol: 'oauth',
     strategy: require('passport-twitter').Strategy,
     options: {
@@ -43,26 +44,30 @@ module.exports.passport = {
   //   }
   // },
 
-  // facebook: {
-  //   name: 'Facebook',
-  //   protocol: 'oauth2',
-  //   strategy: require('passport-facebook').Strategy,
-  //   options: {
-  //     clientID: 'your-client-id',
-  //     clientSecret: 'your-client-secret',
-  //     scope: ['email'] /* email is necessary for login behavior */
-  //   }
-  // },
+  facebook: {
+    name: 'Facebook',
+    className: 'facebook',
+    protocol: 'oauth2',
+    strategy: require('passport-facebook').Strategy,
+    options: {
+      clientID: '1003827562963220',
+      clientSecret: '5b8a0ccc024af99201456334f1167eb9',
+      scope: ['email', 'public_profile'] /* email is necessary for login behavior */
+    }
+  },
 
-  // google: {
-  //   name: 'Google',
-  //   protocol: 'oauth2',
-  //   strategy: require('passport-google-oauth').OAuth2Strategy,
-  //   options: {
-  //     clientID: 'your-client-id',
-  //     clientSecret: 'your-client-secret'
-  //   }
-  // },
+  google: {
+    name: 'Google+',
+    className: 'google-plus',
+    protocol: 'oauth2',
+    strategy: require('passport-google-oauth').OAuth2Strategy,
+    options: {
+      clientID: '647442736142-o41lf5jguacr7isa77fdqoph846gvd4s.apps.googleusercontent.com',
+      clientSecret: 'DavIpi-JVWuBdX5PZjNG7ACP',
+      callbackURL: 'http://localhost:1337/auth/google/callback'
+    },
+    scope: ['https://www.googleapis.com/auth/plus.login']
+  }
 
   // cas: {
   //   name: 'CAS',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>Heebie Jeebies Card Maker</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,14 +28,49 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="/styles/rrssb.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <%- body %>
+  <div class="table-container">
+    <div class="table-block footer-push">
 
+      <% include header/index %>
+
+      
+      <div class="container">
+        <div class="row">
+          <div class="twelve columns">
+          </div>
+        </div>
+
+        <main>
+          <%- body %>
+        </main>
+      </div>
+      
+    </div> <!-- end primary div.table-block -->
+
+
+    <div class="table-block">
+
+      <!-- Page Footer Layout
+           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="container">
+        <footer class="twelve columns">
+          <a href="http://zipwhaa.com/games/heebie-jeebies/">With love, by Zipwhaa</a>
+           | 
+          <a href="/eula">EULA</a>
+        </footer>
+      </div> <!-- end footer div.container -->
+    </div>  <!-- end footer div.table-block -->
+  </div>  <!-- end footer div.table-container -->
 
 
     <!--
@@ -87,8 +122,12 @@
 
     -->
 
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.js"></script>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/card.js"></script>
+    <script src="/js/dependencies/rrssb.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

@@ -30,11 +30,18 @@ module.exports.policies = {
   // sessionAuth: require user to be authenticated to access
 
   // '*': [ 'passport' ],
-  '*': ['passport', 'sessionAuth'],
-  'HomeController': ['passport'],
+  // Require user to be logged in by default
+  '*': ['sessionAuth', 'passport'],
+
+  'StaticViewController': ['passport'],
 
   'auth': {
     '*': ['passport']
+  },
+
+  // Anyone can publicly view cards
+  'CardController': {
+    'one': ['passport']
   }
 
 

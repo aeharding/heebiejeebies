@@ -1,0 +1,176 @@
+* { box-sizing: border-box }
+
+@font-face {
+  font-family: 'HoboStd';
+  src: url('/fonts/HoboStd.eot?#iefix') format('embedded-opentype'),  url('/fonts/HoboStd.otf')  format('opentype'),
+       url('/fonts/HoboStd.woff') format('woff'), url('/fonts/HoboStd.ttf')  format('truetype'), url('/fonts/HoboStd.svg#HoboStd') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raavi';
+  src: url('/fonts/Raavi.eot?#iefix') format('embedded-opentype'),  url('/fonts/Raavi.woff') format('woff'), url('/fonts/Raavi.ttf')  format('truetype'), url('/fonts/Raavi.svg#Raavi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+// STICKY FOOTER
+html, body {
+  height: 100%;
+}
+.table-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.table-block {
+  display: table-row;
+  height: 1px;
+}
+.footer-push {
+  height: auto;
+}
+footer {
+  /* Placeholder footer styles */
+  text-align: center;
+  margin: 1em 0;
+}
+
+
+.header-container {
+  background-color: #3CAB4F;
+
+  header {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0.3em;
+    height: 90px;
+
+    ul {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      font-size: 1.2em;
+
+      li {
+        padding: 0 1em;
+        margin: 0;
+        list-style-type: none;
+        display: inline-block;
+
+        > a {
+          height: 90px;
+          display: inline-block;
+          text-decoration: none;
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+    
+    h1 {
+      color: #FDE625;
+      font-family: "HoboStd";
+      margin: 0 .4em;
+      font-size: 2em;
+      text-transform: uppercase;
+    }
+
+    img {
+      margin-top: 5px;
+      height: 80px;
+      margin-left: 2em;
+    }
+
+    h1, aside, ul {
+      line-height: 90px;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    &, a {
+      color: white;
+      text-decoration: none;
+    }
+
+    aside {
+      float: right;
+      margin-right: 2em;
+    }
+  }
+
+}
+
+
+main {
+  margin-top: 1em;
+}
+
+.button-twitter {
+  background-color: #55acee;
+  color: white;
+  border-color: white;
+}
+.button.button-twitter:hover,
+button.button-twitter:hover {
+  color: white;
+  background-color: darken(#55acee, 10%);
+  border-color: white;
+}
+.button.button-twitter:focus,
+button.button-twitter:focus {
+  color: white;
+  background-color: darken(#55acee, 10%);
+  border-color: white;
+}
+
+.button-facebook {
+  background-color: #3b5998;
+  color: white;
+  border-color: white;
+}
+.button.button-facebook:hover,
+button.button-facebook:hover {
+  color: white;
+  background-color: darken(#3b5998, 10%);
+  border-color: white;
+}
+.button.button-facebook:focus,
+button.button-facebook:focus {
+  color: white;
+  background-color: darken(#3b5998, 10%);
+  border-color: white;
+}
+
+.button-google-plus {
+  background-color: #db4437;
+  color: white;
+  border-color: white;
+}
+.button.button-google-plus:hover,
+button.button-google-plus:hover {
+  color: white;
+  background-color: darken(#db4437, 10%);
+  border-color: white;
+}
+.button.button-google-plus:focus,
+button.button-google-plus:focus {
+  color: white;
+  background-color: darken(#db4437, 10%);
+  border-color: white;
+}
+
+
+.alert {
+  padding: 1em;
+  margin-left: 1em;
+  border-left: 5px solid #db4437;
+}
