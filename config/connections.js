@@ -58,10 +58,10 @@ module.exports.connections = {
   ***************************************************************************/
   mongo: {
     adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    // user: 'username',
-    // password: 'password',
+    host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
+    port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
+    user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'username',
+    password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'password',
     database: 'heebie_data'
   },
 

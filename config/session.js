@@ -66,10 +66,11 @@ module.exports.session = {
   * store                                                                    *
   *                                                                          *
   ***************************************************************************/
-
   adapter: 'mongo',
-  host: 'localhost',
-  port: 27017,
+  host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
+  port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
+  user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'username',
+  password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'password',
   db: 'heebie_sessions',
   collection: 'sessions',
 
