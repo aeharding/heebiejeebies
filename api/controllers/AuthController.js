@@ -31,6 +31,10 @@ var AuthController = {
    * @param {Object} res
    */
   login: function (req, res) {
+    if (req.user) {
+      return res.redirect('/c');
+    }
+
     var strategies = sails.config.passport
       , providers  = {};
 

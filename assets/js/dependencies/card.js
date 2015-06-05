@@ -32,18 +32,16 @@ autoSizeText = function(className) {
 $(function() {
 
   $("#text-top").keyup(function(){
-      $("#card-top").html(
+      $("#card-top").text(
         $("#text-top")
           .val()
-          .replace(/\n/g, '<br/>')
         );
       autoSizeText('card-top');
   });
   $("#text-bottom").keyup(function(){
-      $("#card-bottom").html(
+      $("#card-bottom").text(
         $("#text-bottom")
           .val()
-          .replace(/\n/g, '<br/>')
         );
       autoSizeText('card-bottom');
   });
@@ -53,5 +51,31 @@ $(function() {
 
   jQuery("abbr.timeago").timeago();
 
+  // Card drop down
+  if ($('#smiley-container').length) {
+    var smileySelect = new Drop({
+      target: $('#smiley-container')[0],
+      content: $('#smiley-content').html(),
+      position: 'bottom center',
+      openOn: 'click',
+      classes: 'drop-theme-arrows drop-theme-arrows-bounce smiley-menu'
+    }).on('open', function() {
+      $('.smiley-select').click(function(e) {
+        $('#card-smiley').attr('src', this.src);
+        $('#smiley-container').attr('src', this.src);
+        $('#smiley-input').val($(this).attr('smiley-number'));
+      });
+    });
+  }
+
+
 });
 
+function deleteCard(id) {
+  swal({
+    title: "Error!",
+    text: "Here's my error message!",
+    type: "error",
+    confirmButtonText: "Cool"
+  });
+}

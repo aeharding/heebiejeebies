@@ -31,17 +31,17 @@ module.exports.policies = {
 
   // '*': [ 'passport' ],
   // Require user to be logged in by default
-  '*': ['sessionAuth', 'passport'],
+  '*': ['sessionAuth', 'passport', 'url'],
 
-  'StaticViewController': ['passport'],
+  'StaticViewController': ['passport', 'url'],
 
   'auth': {
-    '*': ['passport']
+    '*': ['passport', 'url']
   },
 
   // Anyone can publicly view cards
   'CardController': {
-    'one': ['passport']
+    'one': ['passport', 'url']
   }
 
 

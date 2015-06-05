@@ -6,7 +6,7 @@
     </a>
     <aside>
       <ul>
-        <% if (user) {%>
+        <% if (typeof user != 'undefined') {%>
           <% include items %>
         <% } %>
       </ul>

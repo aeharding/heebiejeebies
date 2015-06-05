@@ -47,8 +47,19 @@ module.exports = {
   all: function (req, res) {
     Card.find({ author: req.user.id }, function foundCards (err, cards) {
       if (err) return res.send(err, 500);
-      res.json(cards);
-    })
+
+      res.format({
+        json: function() {
+          return res.json(cards);
+        },
+        html: function() {
+          return res.view('card/many', {
+            cards: cards,
+            user: req.user
+          });
+        }
+      });
+    });
   },
 
   /**
@@ -69,12 +80,39 @@ module.exports = {
           html: function() {
             return res.view('card/one', {
               card: card,
-              author: user
+              author: user,
+              user: req.user
             });
           }
         });
       });
     });
-  }
+  },
+
+  /**
+   * CardController.delete()
+   */
+   delete: function (req, res) {
+    Card.findOne({ uid: req.params.uid }, function foundCard (err, card) {
+      if (err) return res.send(err, 500);
+      if (!card) return res.send(404);
+
+      // Determine if author
+      if (req.user.id !== card.author) {
+        return res.forbidden('You are not permitted to perform this action.');
+      }
+
+      card.destroy(function() {
+        res.format({
+          json: function() {
+            return res.send(204);
+          },
+          html: function() {
+            return res.redirect('/c');
+          }
+        });
+      });
+    });
+   }
 
 };

@@ -3,7 +3,7 @@
 <div class="card-wrap">
   <div class="card-front">
     <header><span class='card-text' id="card-top"></span></header>
-    <img src="/images/smiley/3.png" alt="">
+    <img src="/images/smiley/1.png" id="card-smiley">
     <footer><span class='card-text' id="card-bottom"></span></footer>
   </div>
 
@@ -15,9 +15,28 @@
   </div>
 </div>
 
-<form role="form" action="/c" method="post">
+<br>
+
+<form role="form" action="/c" method="post" class="create-card">
   <textarea type="text" name="top" placeholder="Top text" id="text-top" required></textarea>
-  <input type="number" name="smiley" placeholder="Smiley #">
+  <input type="hidden" name="smiley" value="1" placeholder="Smiley #" id="smiley-input">
+  <script type="text/template" id="smiley-content">
+    <img src="/images/smiley/1.png" class="smiley-select" smiley-number="1">
+    <img src="/images/smiley/2.png" class="smiley-select" smiley-number="2">
+    <img src="/images/smiley/3.png" class="smiley-select" smiley-number="3">
+    <img src="/images/smiley/4.png" class="smiley-select" smiley-number="4">
+    <img src="/images/smiley/5.png" class="smiley-select" smiley-number="5">
+    <img src="/images/smiley/6.png" class="smiley-select" smiley-number="6">
+    <img src="/images/smiley/7.png" class="smiley-select" smiley-number="7">
+    <img src="/images/smiley/8.png" class="smiley-select" smiley-number="8">
+    <img src="/images/smiley/9.png" class="smiley-select" smiley-number="9">
+    <img src="/images/smiley/10.png" class="smiley-select" smiley-number="10">
+  </script>
+
+  <div id="smiley-container" tabindex="0">
+    <img src="/images/smiley/1.png" id="smiley-menu">
+  </div>
+
   <textarea type="text" name="bottom" placeholder="Bottom text" id="text-bottom" required></textarea>
   <button type="submit">Create it</button>
 </form>

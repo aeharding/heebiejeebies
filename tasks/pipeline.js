@@ -15,7 +15,9 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.css',
+  'bower_components/tether-drop/dist/css/drop-theme-arrows-bounce.css',
+  'bower_components/sweetalert/dist/sweetalert.css'
 ];
 
 
@@ -28,6 +30,12 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
+
+  'bower_components/tether/js/utils.js',
+  'bower_components/tether/js/tether.js',
+  'bower_components/tether-drop/dist/js/drop.js',
+
+  'bower_components/sweetalert/dist/sweetalert-dev.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

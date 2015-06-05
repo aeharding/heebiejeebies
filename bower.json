@@ -1,0 +1,19 @@
+{
+  "name": "heebiejeebies",
+  "version": "0.0.0",
+  "authors": [
+    "Alexander Harding"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tether-drop": "~1.0.8",
+    "sweetalert": "~1.0.1"
+  }
+}
