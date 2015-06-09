@@ -17,6 +17,17 @@
   text-align: center;
 }
 
+.ie {
+  display: none;
+}
+.msie .ie {
+  display: block;
+}
+
+.msie .notie {
+  display: none;
+}
+
 .permalink {
   width: 250px;
 }
@@ -24,14 +35,15 @@
 .Card (@name, @height) {
   // W: 2.25in; H: 3.5in
   @width: @height * (2.25in/3.5in);
+  @border-radius: @height * (0.1in/3.5in);
 
   .@{name}-front,
   .@{name}-back {
     width: @width;
     height: @height;
-    border-radius: @height * (0.1in/3.5in);
-    position: relative;
+    border-radius: @border-radius;
     display: inline-block;
+    position: relative;
 
   }
 
@@ -87,18 +99,28 @@
 
 
     img {
-      width: @height * (1in/3.5in);
+      height: @width * (1.3in/2.25in);
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-
     }
   }
 
   .@{name}-back {
     background-color: #3CAB4F;
     box-shadow: inset 0 0 0 1000px #3CAB4F; // This forces printing a background :D
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3CAB4F', endColorstr='#3CAB4F')"; /* IE8 */
+
+    .bg {
+      z-index: -1;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: @width;
+      height: @height;
+      border-radius: @border-radius;
+    }
 
     .logo {
       width: @height * (2.3in/3.5in);
@@ -118,18 +140,18 @@
 }
 
 .Card(card, 3.5in);
-.Card(card-thumb, 2.5in);
 
-.card-thumb-front {
+.card-hover-scale {
   transition: all .2s ease-in-out;
+  transform: scale(.75);
+  margin: -35px -20px;
 
   // Animating z-index?? Burn the witch!
   z-index: 0;
 
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1);
     z-index: 100;
-    position: relative;
   }
 }
 
@@ -137,23 +159,51 @@
   display: none;
 }
 
+.card-backs {
+}
 
-.card-thumb-back {
+.hide-on-screen {
   display: none;
 }
+
+.card-fronts {
+  display: inline;
+}
+
+.text-right {
+  display: inline-block;
+}
+
 @media print {
-  .Card(card-thumb, 3.5in);
   * {
     float: none !important;
   }
+  .text-right {
+    text-align: right;
+    display: block;
+
+    .card-back {
+      position: inline-block;
+    }
+  }
+  
+  .card-front, .card-back {
+    vertical-align: top;
+    margin: 3px;
+  }
+
+  .card-hover-scale {
+    transform: scale(1);
+  }
   .card-wrap {
     text-align: left;
+
   }
   .card-backs {
     text-align: right;
+    display: block;
   }
-  .card-back,
-  .card-thumb-back {
+  .card-back {
     display: inline-block;
   }
   .container {
@@ -183,8 +233,36 @@
   .print-hidden {
     display: none;
   }
+  
+  // Situation:
+  // IE/FF rock (mostly). Obeys page margin, card size
+  // IE can have issues with automatically scaling, but remedied by specifying html, body size.
+  // Chrome SUCKS SO MUCH. It does not obey the 'in' unit, and you must say the page is 8.5/11 for the units to be their physical counterparts.
+  // Safari sucks even more. It will completely ignore any margins, and make its own at 10mm. At least it obeys 'in' and other css absolute units -- as long as the page isn't larger than 8.5x11 minus the 10mm borders (WTF UGH)
+
+  body {
+    padding: 0 0.5in;
+  }
+  html, body {
+    // Fix for Chrome's shittiness (see above)
+    width: 8.5in;
+    height: 11in;
+  }
+  html.safari, .safari body {
+    // Fix for Safari's shittiness (see above)
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+  .card-fronts,
+  .card-backs {
+    padding: 0.5in 0;
+    width: 100%;
+    display: inline-block;
+  }
 }
 @page {
-  margin: 0.5in;
+  // Because Chrome sucks balls
+  margin: 0in;
   size: letter portrait;
 }

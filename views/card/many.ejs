@@ -1,35 +1,33 @@
 <div class="print-hidden">
-  <h2>Your cards</h2>
+  <h1>Your cards</h1>
   
   <% if(cards.length) { %>
     <p>Click on a card for more information.</p>
   <% } else { %>
     <p>Uh oh! Looks like you don't have any cards yet.</p>
-    <a href="/c/create" class="button button-primary">Create a new card</a>
+    <a href="/cards/create" class="button button-primary">Create a new card</a>
   <% } %>
 </div>
 
 <%// Why do we do this weird double loop? So that only 6 cards are printed on a page. We have to make the fronts match to the backs. %>
 <% for(var j=0; j<cards.length; j+=6) {%>
-  <% for(var i=j; i < j + 6 && i < cards.length; i++) {%>
-    <a href="/c/<%= cards[i].uid %>" class="no-style">
-      <div class="card-thumb-front">
-        <header><span class='card-text' id="card-top"><%= cards[i].top %></span></header>
+<div class="card-fronts"><% for(var i=j; i < j + 6 && i < cards.length; i++) {%><a href="/cards/<%= cards[i].uid %>" class="no-style"><div class="card-front card-hover-scale">
+        <header><span class='card-text card-top'><%- escapeWithBreaks(cards[i].top) %></span></header>
         <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="">
-        <footer><span class='card-text' id="card-bottom"><%= cards[i].bottom %></span></footer>
-      </div>
-    </a>
-  <% } %>
+        <footer><span class='card-text card-bottom'><%- escapeWithBreaks(cards[i].bottom) %></span></footer>
+      </div></a><% } %></div>
 
   <div class="page-break">&nbsp;</div>
 
-  <div class="card-backs">
-    <% for(var i=j; i < j + 6 && i < cards.length; i++) {%>
-      <div class="card-thumb-back">
+  <div class="card-backs hide-on-screen">
+    <%// Why do we have this weird div here? Because Chrome -sucks- has a bug with page breaks and relative positioned elements where they get progressively more cut off at the top. Boooo TODO: Report to Chrome (also it's not webkit -- Safari works great) %>
+    <% for(var i=j; i < j + 6 && i < cards.length; i++) {%><div style='display: inline-block;overflow:hidden;vertical-align:top'>
+      <div class="card-back">
+        <img src="/images/3CAB4F.png" class="bg">
         <img src="/images/logo.png" class="logo" alt="">
         <img src="/images/subtitle.png" class="subtitle" alt="">
       </div>
-    <% } %>
+    </div><% } %>
   </div>
 <% } %>
 
@@ -38,6 +36,9 @@
     <div class="text-center">
       <br>
       <button class="button button-primary print" onclick="window.print();"><i class="fa fa-print"></i> Print all cards</button>
+
+      <div class="ie">We noticed you're using IE. <strong>To print:</strong> You must press "Print Preview..." and select "100%" instead of shrink to fit.</div>
+
     </div>
   </div>
 <% } %>

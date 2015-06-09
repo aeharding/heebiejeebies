@@ -32,7 +32,7 @@ var AuthController = {
    */
   login: function (req, res) {
     if (req.user) {
-      return res.redirect('/c');
+      return res.redirect('/cards');
     }
 
     var strategies = sails.config.passport

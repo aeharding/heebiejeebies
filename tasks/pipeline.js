@@ -16,8 +16,8 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
-  'bower_components/tether-drop/dist/css/drop-theme-arrows-bounce.css',
-  'bower_components/sweetalert/dist/sweetalert.css'
+  'bower_components/tether-drop/dist/css/drop-theme-basic.css',
+  'bower_components/tether-drop/dist/css/drop-theme-arrows-bounce.css'
 ];
 
 
@@ -34,8 +34,6 @@ var jsFilesToInject = [
   'bower_components/tether/js/utils.js',
   'bower_components/tether/js/tether.js',
   'bower_components/tether-drop/dist/js/drop.js',
-
-  'bower_components/sweetalert/dist/sweetalert-dev.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

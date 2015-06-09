@@ -2,9 +2,9 @@
 
 <div class="card-wrap">
   <div class="card-front">
-    <header><span class='card-text' id="card-top"></span></header>
+    <header><span class='card-text card-top'></span></header>
     <img src="/images/smiley/1.png" id="card-smiley">
-    <footer><span class='card-text' id="card-bottom"></span></footer>
+    <footer><span class='card-text card-bottom'></span></footer>
   </div>
 
   <div class="page-break">&nbsp;</div>
@@ -17,8 +17,8 @@
 
 <br>
 
-<form role="form" action="/c" method="post" class="create-card">
-  <textarea type="text" name="top" placeholder="Top text" id="text-top" required></textarea>
+<form role="form" action="/cards" method="post" class="create-card">
+  <textarea type="text" name="top" placeholder="Top text" id="text-top" required autofocus></textarea>
   <input type="hidden" name="smiley" value="1" placeholder="Smiley #" id="smiley-input">
   <script type="text/template" id="smiley-content">
     <img src="/images/smiley/1.png" class="smiley-select" smiley-number="1">

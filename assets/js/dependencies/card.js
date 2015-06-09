@@ -1,9 +1,8 @@
 // editing a card frontend logic
 var autoSizeText;
-
 autoSizeText = function(className) {
   var el, elements, _i, _len, _results;
-  elements = $('#' + className);
+  elements = $('.' + className);
   if (elements.length < 0) {
     return;
   }
@@ -30,26 +29,23 @@ autoSizeText = function(className) {
 
 
 $(function() {
+  $("abbr.timeago").timeago();
 
   $("#text-top").keyup(function(){
-      $("#card-top").text(
-        $("#text-top")
-          .val()
-        );
+      $(".card-top").html(
+        nl2br(escapeHtml($("#text-top").val()), false)
+      );
       autoSizeText('card-top');
   });
   $("#text-bottom").keyup(function(){
-      $("#card-bottom").text(
-        $("#text-bottom")
-          .val()
-        );
+      $(".card-bottom").html(
+        nl2br(escapeHtml($("#text-bottom").val()), false)
+      );
       autoSizeText('card-bottom');
   });
 
   autoSizeText('card-top');
   autoSizeText('card-bottom');
-
-  jQuery("abbr.timeago").timeago();
 
   // Card drop down
   if ($('#smiley-container').length) {
@@ -62,20 +58,30 @@ $(function() {
     }).on('open', function() {
       $('.smiley-select').click(function(e) {
         $('#card-smiley').attr('src', this.src);
-        $('#smiley-container').attr('src', this.src);
+        $('#smiley-container img').attr('src', this.src);
         $('#smiley-input').val($(this).attr('smiley-number'));
       });
     });
   }
 
-
+  if (/^((?!chrome).)*safari/i.test(navigator.userAgent)) {
+    // is safari... not chrome
+    $('html').addClass('safari');
+  }
 });
 
-function deleteCard(id) {
-  swal({
-    title: "Error!",
-    text: "Here's my error message!",
-    type: "error",
-    confirmButtonText: "Cool"
-  });
+// HTML escape
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
+// Convert our newlines to <br>s
+function nl2br (str, is_xhtml) {   
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
 }

@@ -5,9 +5,14 @@
       <h1>Card creator</h1>
     </a>
     <aside>
-      <ul>
+      <% if (typeof user != 'undefined') {%>
+        <i class="fa fa-bars nav-items" id="nav-expand"></i>
+      <% } %>
+      <ul id="nav-items">
         <% if (typeof user != 'undefined') {%>
           <% include items %>
+        <% } else { %>
+          <li><a href="/">Login</a></li>
         <% } %>
       </ul>
       <!-- <a href="/">Sign in to get started</a> -->

@@ -6,6 +6,12 @@
  */
 
 var randomstring = require("randomstring");
+var nl2br = require("nl2br");
+var escape = require("escape-html");
+
+function escapeWithBreaks(str) {
+  return nl2br(escape(str), false);
+}
 
 module.exports = {
   // Disable default blueprints
@@ -30,7 +36,7 @@ module.exports = {
             return res.json(createdCard);
           },
           html: function() {
-            return res.redirect('/c/'+ createdCard.uid);
+            return res.redirect('/cards/'+ createdCard.uid);
           }
         });
       });
@@ -45,21 +51,26 @@ module.exports = {
    * CardController.all()
    */
   all: function (req, res) {
-    Card.find({ author: req.user.id }, function foundCards (err, cards) {
-      if (err) return res.send(err, 500);
+    Card.find({ author: req.user.id })
+      .sort({ createdAt: 'desc' })
+      .exec(
+        function foundCards (err, cards) {
+          if (err) return res.send(err, 500);
 
-      res.format({
-        json: function() {
-          return res.json(cards);
-        },
-        html: function() {
-          return res.view('card/many', {
-            cards: cards,
-            user: req.user
+          res.format({
+            json: function() {
+              // return res.json(cards);
+            },
+            html: function() {
+              return res.view('card/many', {
+                cards: cards,
+                user: req.user,
+                escapeWithBreaks: escapeWithBreaks
+              });
+            }
           });
         }
-      });
-    });
+      );
   },
 
   /**
@@ -81,7 +92,8 @@ module.exports = {
             return res.view('card/one', {
               card: card,
               author: user,
-              user: req.user
+              user: req.user,
+              escapeWithBreaks: escapeWithBreaks
             });
           }
         });
@@ -108,7 +120,7 @@ module.exports = {
             return res.send(204);
           },
           html: function() {
-            return res.redirect('/c');
+            return res.redirect('/cards');
           }
         });
       });

@@ -13,7 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "tether-drop": "~1.0.8",
-    "sweetalert": "~1.0.1"
+    "tether-drop": "~1.0.8"
   }
 }

@@ -58,14 +58,14 @@ module.exports.routes = {
 
 
   // CARD
-  'get /c/create': 'CardController.createPrompt',
-  'post /c': 'CardController.create',
+  'get /cards/create': 'CardController.createPrompt',
+  'post /cards': 'CardController.create',
 
-  'get /c': 'CardController.all',
-  'get /c/:uid': 'CardController.one',
+  'get /cards': 'CardController.all',
+  'get /cards/:uid': 'CardController.one',
 
-  'get /c/:uid/delete': 'CardController.delete',
-  'delete /c/:uid': 'CardController.delete',
+  'get /cards/:uid/delete': 'CardController.delete',
+  'delete /cards/:uid': 'CardController.delete',
 
   'get /eula': 'StaticViewController.eula'
 };
