@@ -30,7 +30,8 @@ module.exports.passport = {
     strategy: require('passport-twitter').Strategy,
     options: {
       consumerKey: process.env.TWITTER_CONSUMER_KEY,
-      consumerSecret: process.env.TWITTER_CONSUMER_SECRET
+      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+      callbackURL: process.env.HOST_URL + '/auth/twitter/callback'
     }
   },
 
@@ -52,7 +53,8 @@ module.exports.passport = {
     options: {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      scope: ['email', 'public_profile'] /* email is necessary for login behavior */
+      scope: ['email', 'public_profile'], /* email is necessary for login behavior */
+      callbackURL: process.env.HOST_URL + '/auth/facebook/callback'
     }
   },
 
