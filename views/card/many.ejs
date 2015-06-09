@@ -14,6 +14,9 @@
 <div class="card-fronts"><% for(var i=j; i < j + 6 && i < cards.length; i++) {%><a href="/cards/<%= cards[i].uid %>" class="no-style"><div class="card-front card-hover-scale">
         <header><span class='card-text card-top'><%- escapeWithBreaks(cards[i].top) %></span></header>
         <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="">
+        <% if(cards[i].attribution) { %>
+          <aside class='card-author'><%- user.displayName %></aside>
+        <% } %>
         <footer><span class='card-text card-bottom'><%- escapeWithBreaks(cards[i].bottom) %></span></footer>
       </div></a><% } %></div>
 

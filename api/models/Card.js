@@ -27,6 +27,10 @@ module.exports = {
       model: 'User',
       required: true
     },
+    attribution: {
+      type: 'boolean',
+      defaultsTo: false
+    },
     uid: {
       type: 'String',
       primaryKey: true,

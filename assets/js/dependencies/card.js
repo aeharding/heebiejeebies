@@ -44,8 +44,17 @@ $(function() {
       autoSizeText('card-bottom');
   });
 
+  $("#attribution-checkbox").click(function (){
+    if($('#attribution-checkbox')[0].checked) {
+      $(".card-author").css('visibility', 'visible');
+    } else {
+      $(".card-author").css('visibility', 'hidden');
+    }
+  });
+
   autoSizeText('card-top');
   autoSizeText('card-bottom');
+  autoSizeText('card-author');
 
   // Card drop down
   if ($('#smiley-container').length) {

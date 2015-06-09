@@ -3,6 +3,9 @@
     <div class="card-front">
       <header><span class='card-text card-top'><%- escapeWithBreaks(card.top) %></span></header>
       <img src="/images/smiley/<%= card.smiley %>.png" alt="">
+      <% if(card.attribution) { %>
+        <aside class='card-author'><%- author.displayName %></aside>
+      <% } %>
       <footer><span class='card-text card-bottom'><%- escapeWithBreaks(card.bottom) %></span></footer>
     </div>
   </div>

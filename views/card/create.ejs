@@ -4,6 +4,7 @@
   <div class="card-front">
     <header><span class='card-text card-top'></span></header>
     <img src="/images/smiley/1.png" id="card-smiley">
+    <aside class='card-author' style='visibility: hidden;'><%- user.displayName %></aside>
     <footer><span class='card-text card-bottom'></span></footer>
   </div>
 
@@ -38,5 +39,9 @@
   </div>
 
   <textarea type="text" name="bottom" placeholder="Bottom text" id="text-bottom" required></textarea>
-  <button type="submit">Create it</button>
+
+  <div class="stack-attribution-create">
+    <label><input type="checkbox" name="attribution" value="true" id="attribution-checkbox"> Author watermark</label>
+    <button type="submit">Create it</button>
+  </div>
 </form>
