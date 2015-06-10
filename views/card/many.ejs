@@ -15,7 +15,7 @@
         <header><span class='card-text card-top'><%- escapeWithBreaks(cards[i].top) %></span></header>
         <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="">
         <% if(cards[i].attribution) { %>
-          <aside class='card-author'><%- user.displayName %></aside>
+          <aside><div class='card-author two-lines'><div class='one-line'><%- user.displayName %></div><span class='one-line'><%- user.location %></span></div></aside>
         <% } %>
         <footer><span class='card-text card-bottom'><%- escapeWithBreaks(cards[i].bottom) %></span></footer>
       </div></a><% } %></div>

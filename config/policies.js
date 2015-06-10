@@ -41,7 +41,11 @@ module.exports.policies = {
 
   // Anyone can publicly view cards
   'CardController': {
-    'one': ['passport', 'url']
+    'one': ['passport', 'url'],
+    'create': ['passport', 'url', 'userNotCompleteRedirect'],
+    'createPrompt': ['passport', 'url', 'userNotCompleteRedirect'],
+    'all': ['passport', 'url', 'userNotCompleteRedirect'],
+    'delete': ['passport', 'url', 'userNotCompleteRedirect']
   }
 
 

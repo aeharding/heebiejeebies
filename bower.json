@@ -13,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "tether-drop": "~1.0.8"
+    "tether-drop": "~1.0.8",
+    "devbridge-autocomplete": "~1.2.21"
   }
 }

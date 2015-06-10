@@ -4,7 +4,7 @@
   <div class="card-front">
     <header><span class='card-text card-top'></span></header>
     <img src="/images/smiley/1.png" id="card-smiley">
-    <aside class='card-author' style='visibility: hidden;'><%- user.displayName %></aside>
+    <aside><div class='card-author two-lines' style='visibility: hidden;'><div class='one-line'><%- user.displayName %></div><span class='one-line'><%- user.location %></span></div></aside>
     <footer><span class='card-text card-bottom'></span></footer>
   </div>
 
@@ -19,7 +19,7 @@
 <br>
 
 <form role="form" action="/cards" method="post" class="create-card">
-  <textarea type="text" name="top" placeholder="Top text" id="text-top" required autofocus></textarea>
+  <textarea type="text" name="top" placeholder="Top text" id="text-top" maxlength='300' required autofocus></textarea>
   <input type="hidden" name="smiley" value="1" placeholder="Smiley #" id="smiley-input">
   <script type="text/template" id="smiley-content">
     <img src="/images/smiley/1.png" class="smiley-select" smiley-number="1">
@@ -38,7 +38,7 @@
     <img src="/images/smiley/1.png" id="smiley-menu">
   </div>
 
-  <textarea type="text" name="bottom" placeholder="Bottom text" id="text-bottom" required></textarea>
+  <textarea type="text" name="bottom" placeholder="Bottom text" id="text-bottom" maxlength='300' required></textarea>
 
   <div class="stack-attribution-create">
     <label><input type="checkbox" name="attribution" value="true" id="attribution-checkbox"> Author watermark</label>

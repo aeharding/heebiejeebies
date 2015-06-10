@@ -31,6 +31,7 @@ var jsFilesToInject = [
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
 
+  'bower_components/devbridge-autocomplete/dist/jquery.autocomplete.js',
   'bower_components/tether/js/utils.js',
   'bower_components/tether/js/tether.js',
   'bower_components/tether-drop/dist/js/drop.js',

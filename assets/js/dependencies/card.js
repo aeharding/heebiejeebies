@@ -54,7 +54,6 @@ $(function() {
 
   autoSizeText('card-top');
   autoSizeText('card-bottom');
-  autoSizeText('card-author');
 
   // Card drop down
   if ($('#smiley-container').length) {

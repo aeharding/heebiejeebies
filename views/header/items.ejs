@@ -1,3 +1,10 @@
 <li><a href="/cards">My Cards</a></li>
 <li><a href="/cards/create">Create a new card</a></li>
-<li><a href="/logout">Logout</a></li>
+<li><a href="#" id="user-expand" class="author"><i class="fa fa-user"></i> <%= user.displayName.split(' ')[0] %></a></li>
+
+<script type="text/template" id="user-items">
+  <ul>
+    <li><a href="/user/settings">Settings</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</script>

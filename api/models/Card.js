@@ -11,7 +11,8 @@ module.exports = {
   attributes: {
     top: {
       type: 'string',
-      required: true
+      required: true,
+      maxLength: 300
     },
     smiley: {
       type: 'integer',
@@ -21,7 +22,8 @@ module.exports = {
     },
     bottom: {
       type: 'string',
-      required: true
+      required: true,
+      maxLength: 300
     },
     author: {
       model: 'User',

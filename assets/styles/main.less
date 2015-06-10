@@ -29,6 +29,35 @@ a.no-style {
   text-align: center;
 }
 
+.user-drop-down {
+  width: 150px;
+}
+.drop.user-drop-down {
+  background-color: #3CAB4F;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  overflow: hidden;
+
+  ul {
+    margin: 0;
+  }
+  li {
+    margin: 0;
+    list-style: none;
+  }
+  a {
+    padding: 20px;
+    color: white;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
 // STICKY FOOTER
 html, body {
   height: 100%;
@@ -72,12 +101,20 @@ footer {
         margin: 0;
         list-style-type: none;
         display: inline-block;
+        vertical-align: top;
 
         > a {
+          z-index: 1;
           padding: 0 1em;
           height: 90px;
           display: inline-block;
           text-decoration: none;
+        }
+        .author {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
         }
 
         &:hover {
@@ -231,4 +268,9 @@ button.button-google-plus:focus {
   padding: 1em;
   margin-left: 1em;
   border-left: 5px solid #db4437;
+}
+.success-alert {
+  padding: 1em;
+  margin-left: 1em;
+  border-left: 5px solid #3CAB4F;
 }

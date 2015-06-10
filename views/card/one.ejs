@@ -4,7 +4,7 @@
       <header><span class='card-text card-top'><%- escapeWithBreaks(card.top) %></span></header>
       <img src="/images/smiley/<%= card.smiley %>.png" alt="">
       <% if(card.attribution) { %>
-        <aside class='card-author'><%- author.displayName %></aside>
+        <aside><div class='card-author two-lines'><div class='one-line'><%- author.displayName %></div><span class='one-line'><%- author.location %></span></div></aside>
       <% } %>
       <footer><span class='card-text card-bottom'><%- escapeWithBreaks(card.bottom) %></span></footer>
     </div>
@@ -14,7 +14,6 @@
   
   <div class="text-right">
     <%// Why do we have this weird div here? Because Chrome -sucks- has a bug with page breaks and relative positioned elements where they get progressively more cut off at the top. Boooo TODO: Report to Chrome (also it's not webkit -- Safari works great) %>
-    <!--<div style='display: inline-block;overflow:hidden;vertical-align:bottom'>-->
     <div class="card-backs">
       <div class="card-back">
         <img src="/images/3CAB4F.png" class="bg">
@@ -22,7 +21,6 @@
         <img src="/images/subtitle.png" class="subtitle" alt="">
       </div>
     </div>
-    <!--</div>-->
   </div>
 </div>
 

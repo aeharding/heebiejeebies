@@ -7,7 +7,8 @@ var User = {
     displayName : { type: 'string' },
     email       : { type: 'email',  unique: true },
     passports   : { collection: 'Passport', via: 'user' },
-    cards       : { collection: 'Card', via: 'author' }
+    cards       : { collection: 'Card', via: 'author' },
+    location    : { type: 'string', maxLength: 50 }
   }
 };
 
