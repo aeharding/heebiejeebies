@@ -12,3 +12,4 @@ Must be configured properly
  * `TWITTER_CONSUMER_KEY` & `TWITTER_CONSUMER_SECRET`
  * `PORT` - port to run http server on. Default is '1337'
  * `NODE_ENV` - default 'production'
+ * `CARD_URL` - obfuscate the csv card download

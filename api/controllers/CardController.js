@@ -9,6 +9,9 @@ var randomstring = require("randomstring");
 var nl2br = require("nl2br");
 var escape = require("escape-html");
 
+var json2csv = require('json2csv');
+
+
 function escapeWithBreaks(str) {
   return nl2br(escape(str), false);
 }
@@ -125,6 +128,42 @@ module.exports = {
         });
       });
     });
-   }
+   },
+
+  /**
+   * CardController.delete()
+   */
+
+  exportAllToCsv: function (req, res) {
+    Card.find().populate('author').exec(function foundAllCards (err, cards) {
+      if (err) return res.send(500);
+
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].displayName = cards[i].author.displayName;
+        cards[i].location = cards[i].author.location;
+        cards[i].username = cards[i].author.username;
+      }
+
+      json2csv({ data: cards, fields: [
+        'displayName',
+        'location',
+        'username',
+        'top',
+        'smiley',
+        'bottom',
+        'attribution',
+        'uid',
+        'createdAt'
+      ] }, function(err, csv) {
+        if (err) return res.send(500);
+
+        res.set('Content-Type', 'application/octet-stream');
+        res.send(csv);
+      });
+    });
+
+
+  }
 
 };
+

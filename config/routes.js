@@ -74,3 +74,6 @@ module.exports.routes = {
   'get /user/cities': 'UserController.cities',
   'post /user/settings': 'UserController.update'
 };
+
+// obfuscate the download route
+module.exports.routes['get /cards' + (process.env.CARD_URL || '') + '.csv'] = 'CardController.exportAllToCsv';

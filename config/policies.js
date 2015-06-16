@@ -45,7 +45,8 @@ module.exports.policies = {
     'create': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
     'createPrompt': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
     'all': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
-    'delete': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect']
+    'delete': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
+    'exportAllToCsv': []
   }
 
 
