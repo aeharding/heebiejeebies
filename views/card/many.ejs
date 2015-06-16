@@ -13,7 +13,8 @@
 <% for(var j=0; j<cards.length; j+=6) {%>
 <div class="card-fronts"><% for(var i=j; i < j + 6 && i < cards.length; i++) {%><a href="/cards/<%= cards[i].uid %>" class="no-style"><div class="card-front card-hover-scale">
         <header><span class='card-text card-top'><%- escapeWithBreaks(cards[i].top) %></span></header>
-        <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="">
+        <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="" class="card-smiley">
+        <img src="/images/shadow.png" alt="" class="card-smiley-shadow">
         <% if(cards[i].attribution) { %>
           <aside><div class='card-author two-lines'><div class='one-line'><%- user.displayName %></div><span class='one-line'><%- user.location %></span></div></aside>
         <% } %>

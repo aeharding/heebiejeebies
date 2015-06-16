@@ -2,7 +2,8 @@
   <div class="card-fronts">
     <div class="card-front">
       <header><span class='card-text card-top'><%- escapeWithBreaks(card.top) %></span></header>
-      <img src="/images/smiley/<%= card.smiley %>.png" alt="">
+      <img src="/images/smiley/<%= card.smiley %>.png" alt="" class="card-smiley">
+      <img src="/images/shadow.png" alt="" class="card-smiley-shadow">
       <% if(card.attribution) { %>
         <aside><div class='card-author two-lines'><div class='one-line'><%- author.displayName %></div><span class='one-line'><%- author.location %></span></div></aside>
       <% } %>

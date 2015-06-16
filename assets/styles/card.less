@@ -60,7 +60,7 @@
       right: 0.125in;
       bottom: 0.125in;
       left: 0.125in;
-      border: @height * (0.06in/3.5in) solid #3CAB4F;
+      border: @height * (0.06in/3.5in) solid #005A00;
       border-radius: @border-radius;
       content: ' ';
     }
@@ -137,13 +137,21 @@
       }
     }
 
-    img {
+    .card-smiley {
       height: @width * (1.3in/2.25in);
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
+    }
+
+    .card-smiley-shadow {
+      position: absolute;
+      left: 50%;
+      top: 66%;
+      transform: translate(-50%, -66%);
+      width: @width * (1in/2.25in);
     }
   }
 
