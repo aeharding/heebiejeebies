@@ -14,6 +14,12 @@ module.exports = {
    */
   eula: function (req, res) {
     return res.view('eula');
+  },
+  /**
+   * `StaticViewsController.privacyPolicy()`
+   */
+  privacyPolicy: function (req, res) {
+    return res.view('privacy-policy');
   }
 };
 

@@ -68,6 +68,7 @@ module.exports.routes = {
   'delete /cards/:uid': 'CardController.delete',
 
   'get /eula': 'StaticViewController.eula',
+  'get /privacy-policy': 'StaticViewController.privacyPolicy',
 
   'get /user/settings': 'UserController.updateView',
   'get /user/cities': 'UserController.cities',

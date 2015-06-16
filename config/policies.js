@@ -42,10 +42,10 @@ module.exports.policies = {
   // Anyone can publicly view cards
   'CardController': {
     'one': ['passport', 'url'],
-    'create': ['passport', 'url', 'userNotCompleteRedirect'],
-    'createPrompt': ['passport', 'url', 'userNotCompleteRedirect'],
-    'all': ['passport', 'url', 'userNotCompleteRedirect'],
-    'delete': ['passport', 'url', 'userNotCompleteRedirect']
+    'create': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
+    'createPrompt': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
+    'all': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect'],
+    'delete': ['sessionAuth', 'passport', 'url', 'userNotCompleteRedirect']
   }
 
 
