@@ -45,23 +45,33 @@
   .@{name}-back {
     width: @width;
     height: @height;
-    border-radius: @border-radius;
     display: inline-block;
     position: relative;
-
   }
 
   .@{name}-front {
-    border: @height * (0.06in/3.5in) solid black;
-    background-color: white;
+
+    // Border set 1/8in inwards
+    &:after {
+      background-color: white;
+      z-index: -1;
+      position: absolute;
+      top: 0.125in;
+      right: 0.125in;
+      bottom: 0.125in;
+      left: 0.125in;
+      border: @height * (0.06in/3.5in) solid #3CAB4F;
+      border-radius: @border-radius;
+      content: ' ';
+    }
 
     header, footer {
       position: absolute;
 
       left: 0;
       right: 0;
-      height: @height * (0.9in/3.5in);
-      margin: @height * (0.1in/3.5in);
+      height: @height * (0.8in/3.5in);
+      margin: @height * (0.225in/3.5in);
       text-align: center;
 
       .card-text {
@@ -114,7 +124,7 @@
 
       .two-lines {
         position: absolute;
-        bottom: @width * (0.1in/2.25in);
+        bottom: @width * (0.225in/2.25in);
         width: 100%;
       }
       .one-line {
@@ -173,14 +183,14 @@
 
 .card-hover-scale {
   transition: all .2s ease-in-out;
-  transform: scale(.75);
+  transform: scale(.85);
   margin: -35px -20px;
 
   // Animating z-index?? Burn the witch!
   z-index: 0;
 
   &:hover {
-    transform: scale(1);
+    transform: scale(1.05);
     z-index: 100;
   }
 }
@@ -220,6 +230,16 @@
   .card-front, .card-back {
     vertical-align: top;
     margin: 3px;
+  }
+  .card-front:before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    content: ' ';
+    z-index: 2;
+    border: 1px dashed #ccc;
   }
 
   .card-hover-scale {
@@ -268,7 +288,7 @@
   // IE/FF rock (mostly). Obeys page margin, card size
   // IE can have issues with automatically scaling, but remedied by specifying html, body size.
   // Chrome SUCKS SO MUCH. It does not obey the 'in' unit, and you must say the page is 8.5/11 for the units to be their physical counterparts.
-  // Safari sucks even more. It will completely ignore any margins, and make its own at 10mm. At least it obeys 'in' and other css absolute units -- as long as the page isn't larger than 8.5x11 minus the 10mm borders (WTF UGH)
+  // Safari sucks even more. It will completely ignore any margins, and make its own at 10mm. Also, physical css units mean _nothing_, ever. So we have to hack away and do some custom scaling.
 
   body {
     padding: 0 0.5in;
@@ -280,10 +300,16 @@
   }
   html.safari, .safari body {
     // Fix for Safari's shittiness (see above)
-    width: 100%;
-    height: auto;
+    // width: 100%;
     padding: 0;
   }
+  .safari .card-front,
+  .safari .card-back {
+    // ugh
+    transform: scale(1.0606060606);
+    margin: 13px 10px;
+  }
+
   .card-fronts,
   .card-backs {
     padding: 0.5in 0;
