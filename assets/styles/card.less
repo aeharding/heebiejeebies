@@ -56,11 +56,11 @@
       background-color: white;
       z-index: -1;
       position: absolute;
-      top: 0.125in;
-      right: 0.125in;
-      bottom: 0.125in;
-      left: 0.125in;
-      border: @height * (0.06in/3.5in) solid #005A00;
+      top: @height * (0.125in/3.5in);
+      right: @height * (0.125in/3.5in);
+      bottom: @height * (0.125in/3.5in);
+      left: @height * (0.125in/3.5in);
+      border: @height * (0.05in/3.5in) solid #005A00;
       border-radius: @border-radius;
       content: ' ';
     }
@@ -156,33 +156,44 @@
   }
 
   .@{name}-back {
-    background-color: #3CAB4F;
-    box-shadow: inset 0 0 0 1000px #3CAB4F; // This forces printing a background :D
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3CAB4F', endColorstr='#3CAB4F')"; /* IE8 */
+    // set 1/8in inwards
+    &:after {
+      border: @height * (0.05in/3.5in) solid white;
 
+      z-index: 0;
+      position: absolute;
+      top: @height * (0.125in/3.5in) * 2;
+      right: @height * (0.125in/3.5in) * 2;
+      bottom: @height * (0.125in/3.5in) * 2;
+      left: @height * (0.125in/3.5in) * 2;
+      content: ' ';
+      border-radius: @border-radius;
+    }
     .bg {
       z-index: -1;
       position: absolute;
-      left: 0;
-      right: 0;
-      width: @width;
-      height: @height;
+      top: @height * (0.125in/3.5in);
+      right: @height * (0.125in/3.5in);
+      bottom: @height * (0.125in/3.5in);
+      left: @height * (0.125in/3.5in);
+      width: @width - (@height * (0.125in/3.5in) * 2);
+      height: @height - (@height * (0.125in/3.5in) * 2);
       border-radius: @border-radius;
     }
 
     .logo {
-      width: @height * (2.3in/3.5in);
+      width: @height * (1.7in/3.5in);
       position: absolute;
       left: 50%;
       top: 35%;
       transform: translate(-50%, -35%);
     }
     .subtitle {
-      width: @height * (2in/3.5in);
+      width: @height * (1.5in/3.5in);
       position: absolute;
       left: 50%;
-      top: 80%;
-      transform: translate(-50%, -80%);
+      top: 75%;
+      transform: translate(-50%, -75%);
     }
   }
 }
@@ -239,7 +250,8 @@
     vertical-align: top;
     margin: 3px;
   }
-  .card-front:before {
+  .card-front:before,
+  .card-back:before {
     top: 0;
     right: 0;
     bottom: 0;
