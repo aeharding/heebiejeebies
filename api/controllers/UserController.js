@@ -37,7 +37,7 @@ module.exports = {
     request({
       url: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
       qs: {
-        key: 'AIzaSyDFl3f_ezPd7G9I_9r-B2K0jMU4gs-GHvI',
+        key: process.env.GOOGLE_MAPS_PUBLIC_API_SERVER_KEY,
         types: '(regions)',
         sensor: false,
         input: req.query.input
