@@ -78,6 +78,39 @@ $(function() {
   }
 });
 
+function toggleCard(uid) {
+  $('#' + uid).toggleClass('not-printable');
+
+  for (var i = 0; i < cards.length; i++) {
+    if (uid === cards[i].uid) {
+      cards[i].notPrintable = !cards[i].notPrintable;
+    }
+  }
+  if ($('#' + uid).hasClass('not-printable')) {
+    setTimeout(updateCards, 200);
+  } else {
+    updateCards();
+  }
+}
+
+function updateCards() {
+  // Many cards page
+  if ($('#printable-cards').length) {
+    $.get( "/templates/printableCards.ejs", function( data ) {
+      console.log(groupedCardsForPrinting(cards))
+      var compiledCards = ejs.render(data, {
+        groupedCardsForPrinting: groupedCardsForPrinting(cards),
+        cards: cards
+      });
+
+      $('#printable-cards').html(compiledCards);
+
+      autoSizeText('card-top');
+      autoSizeText('card-bottom');
+    });
+  }
+}
+
 // HTML escape
 function escapeHtml(unsafe) {
     return unsafe
@@ -92,4 +125,31 @@ function escapeHtml(unsafe) {
 function nl2br (str, is_xhtml) {   
     var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+}
+
+function escapeWithBreaks(str) {
+  return nl2br(escapeHtml(str), false);
+}
+
+
+
+function groupedCardsForPrinting(cards) {
+  function newPageGroup() {
+    var ret = [];
+    ret.printable = 0;
+    return ret;
+  }
+
+  var ret = [newPageGroup()];
+
+  for (var i = 0; i < cards.length; i++) {
+
+    if (ret[ret.length-1].printable >= 6) {
+      ret.push(newPageGroup());
+    }
+
+    ret[ret.length-1].push(cards[i]);
+    if (!cards[i].notPrintable) ret[ret.length-1].printable++;
+  }
+  return ret;
 }

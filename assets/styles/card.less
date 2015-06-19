@@ -216,6 +216,30 @@
   }
 }
 
+.card-front:before {
+  transition: all .2s ease-in-out;
+  content: '';
+  position: absolute;
+  top: 0.12in;
+  right: 0.12in;
+  bottom: 0.12in;
+  left: 0.12in;
+  text-align: center;
+  padding-top: 0.5in;
+  z-index: -5;
+  background-color: rgba(255, 255, 255, 0);
+}
+.not-printable.card-front {
+  transform: scale(.85);
+  &:before {
+    content: 'Printing card\A disabled';
+    white-space: pre;
+    font-size: 20px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
 .page-break {
   display: none;
 }
@@ -235,10 +259,19 @@
   display: inline-block;
 }
 
+.safari-show {
+  display: none;
+}
+.safari .safari-show {
+  display: block;
+}
+
+
 @media print {
   * {
     float: none !important;
   }
+
   .text-right {
     text-align: right;
     display: block;
@@ -246,6 +279,10 @@
     .card-back {
       position: inline-block;
     }
+  }
+
+  .not-printable {
+    display: none !important;
   }
   
   .card-front, .card-back {
@@ -259,7 +296,8 @@
     bottom: 0;
     left: 0;
     position: absolute;
-    content: ' ';
+    content: '';
+    background: none;
     z-index: 2;
     border: 1px dashed #ccc;
   }
@@ -322,7 +360,7 @@
   }
   html.safari, .safari body {
     // Fix for Safari's shittiness (see above)
-    // width: 100%;
+    width: 100%;
     padding: 0;
   }
   .safari .card-front,
@@ -331,7 +369,6 @@
     transform: scale(1.0606060606);
     margin: 13px 10px;
   }
-
   .card-fronts,
   .card-backs {
     padding: 0.5in 0;
@@ -339,6 +376,7 @@
     display: inline-block;
   }
 }
+
 @page {
   // Because Chrome sucks balls
   margin: 0in;

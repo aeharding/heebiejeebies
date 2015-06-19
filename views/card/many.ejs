@@ -1,39 +1,22 @@
+<script>
+  window.user = <%- JSON.stringify(user) %>;
+  window.cards = <%- JSON.stringify(cards) %>;
+</script>
+
+
 <div class="print-hidden">
   <h1>Your cards</h1>
   
   <% if(cards.length) { %>
-    <p>Click on a card for more information.</p>
+    <p>Click on a card for more information. <strong>Right click a card to toggle printing it from this page of cards.</strong></p>
   <% } else { %>
     <p>Uh oh! Looks like you don't have any cards yet.</p>
     <a href="/cards/create" class="button button-primary">Create a new card</a>
   <% } %>
 </div>
-
-<%// Why do we do this weird double loop? So that only 6 cards are printed on a page. We have to make the fronts match to the backs. %>
-<% for(var j=0; j<cards.length; j+=6) {%>
-<div class="card-fronts"><% for(var i=j; i < j + 6 && i < cards.length; i++) {%><a href="/cards/<%= cards[i].uid %>" class="no-style"><div class="card-front card-hover-scale">
-        <header><span class='card-text card-top'><%- escapeWithBreaks(cards[i].top) %></span></header>
-        <img src="/images/smiley/<%= cards[i].smiley %>.png" alt="" class="card-smiley">
-        <img src="/images/shadow.png" alt="" class="card-smiley-shadow">
-        <% if(cards[i].attribution) { %>
-          <aside><div class='card-author two-lines'><div class='one-line'><%- user.displayName %></div><span class='one-line'><%- user.location %></span></div></aside>
-        <% } %>
-        <footer><span class='card-text card-bottom'><%- escapeWithBreaks(cards[i].bottom) %></span></footer>
-      </div></a><% } %></div>
-
-  <div class="page-break">&nbsp;</div>
-
-  <div class="card-backs hide-on-screen">
-    <%// Why do we have this weird div here? Because Chrome -sucks- has a bug with page breaks and relative positioned elements where they get progressively more cut off at the top. Boooo TODO: Report to Chrome (also it's not webkit -- Safari works great) %>
-    <% for(var i=j; i < j + 6 && i < cards.length; i++) {%><div style='display: inline-block;overflow:hidden;vertical-align:top'>
-      <div class="card-back">
-        <img src="/images/3CAB4F.png" class="bg">
-        <img src="/images/logo.png" class="logo" alt="">
-        <img src="/images/subtitle.png" class="subtitle" alt="">
-      </div>
-    </div><% } %>
-  </div>
-<% } %>
+<div id="printable-cards">
+  <% include ../../assets/templates/printableCards %>
+</div>
 
 <% if(cards.length) { %>
   <div class="print-hidden">
@@ -41,7 +24,9 @@
       <br>
       <button class="button button-primary print" onclick="window.print();"><i class="fa fa-print"></i> Print all cards</button>
 
-      <div class="ie">We noticed you're using IE. <strong>To print:</strong> You must press "Print Preview..." and select "100%" instead of shrink to fit.</div>
+      <div class="safari-show">
+        Note: You're using Safari. Printing cards can be buggy. If your card does not print correctly, try using Chrome, Firefox, or Internet Explorer.
+      </div>
 
     </div>
   </div>

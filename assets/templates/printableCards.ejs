@@ -1,0 +1,13 @@
+<%// Why do we do this weird double loop? So that only 6 cards are printed on a page. We have to make the fronts match to the backs. %>
+<% for(var i=0; i < groupedCardsForPrinting.length; i++) { %><div class="card-fronts"><% for(var j=0; j < groupedCardsForPrinting[i].length; j++) {%><a href="/cards/<%= groupedCardsForPrinting[i][j].uid %>" class="no-style"><div class="card-front card-hover-scale <%- !!groupedCardsForPrinting[i][j].notPrintable ? 'not-printable' : '' %>" oncontextmenu="toggleCard('<%= groupedCardsForPrinting[i][j].uid %>');return false;" id="<%= groupedCardsForPrinting[i][j].uid %>"><header><span class='card-text card-top'><%- escapeWithBreaks(groupedCardsForPrinting[i][j].top) %></span></header>
+        <img src="/images/smiley/<%= groupedCardsForPrinting[i][j].smiley %>.png" alt="" class="card-smiley">
+        <img src="/images/shadow.png" alt="" class="card-smiley-shadow">
+        <% if(groupedCardsForPrinting[i][j].attribution) { %>
+          <aside><div class='card-author two-lines'><div class='one-line'><%- user.displayName %></div><span class='one-line'><%- user.location %></span></div></aside>
+        <% } %>
+        <footer><span class='card-text card-bottom'><%- escapeWithBreaks(groupedCardsForPrinting[i][j].bottom) %></span></footer></div></a><% } %></div><div class="page-break">&nbsp;</div><div class="card-backs hide-on-screen"><% for(var j=0; j < groupedCardsForPrinting[i].length; j++) {%><div style='display: inline-block;overflow:hidden;vertical-align:top'>
+      <div class="card-back <%- !!groupedCardsForPrinting[i][j].notPrintable ? 'not-printable' : '' %>">
+        <img src="/images/3CAB4F.png" class="bg">
+        <img src="/images/logo.png" class="logo" alt="">
+        <img src="/images/subtitle.png" class="subtitle" alt="">
+      </div></div><% } %></div><% } %>

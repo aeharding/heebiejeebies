@@ -60,12 +60,22 @@ module.exports = {
         function foundCards (err, cards) {
           if (err) return res.send(err, 500);
 
+          var groupedCardsForPrinting = [];
+          for (var i = 0; i < cards.length; i+=6) {
+            var group = [];
+            for (var j = i; j < i + 6 && j < cards.length; j++) {
+              group.push(cards[j]);
+            }
+            groupedCardsForPrinting.push(group);
+          }
+
           res.format({
             json: function() {
-              // return res.json(cards);
+              return res.json(cards);
             },
             html: function() {
               return res.view('card/many', {
+                groupedCardsForPrinting: groupedCardsForPrinting,
                 cards: cards,
                 user: req.user,
                 escapeWithBreaks: escapeWithBreaks
