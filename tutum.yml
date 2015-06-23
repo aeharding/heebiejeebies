@@ -1,0 +1,23 @@
+app:
+  image: tutum.co/aharding/heebiejeebies_app
+  links:
+    - mongo
+    - redis
+  ports:
+    - "80:80"
+  environment:
+   - GOOGLE_CLIENT_ID=<your key here>
+   - GOOGLE_CLIENT_SECRET=<your key here>
+   - FACEBOOK_CLIENT_ID=<your key here>
+   - FACEBOOK_CLIENT_SECRET=<your key here>
+   - TWITTER_CONSUMER_KEY=<your key here>
+   - TWITTER_CONSUMER_SECRET=<your key here>
+   - GOOGLE_MAPS_PUBLIC_API_SERVER_KEY=<your key here>
+   - HOST_URL=<your key here>
+   - EXPRESS_SECRET=<your key here>
+
+redis:
+  image: tutum.co/aharding/heebiejeebies_redis
+
+mongo:
+  image: tutum.co/aharding/heebiejeebies_mongo

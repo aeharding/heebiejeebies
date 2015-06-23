@@ -1,0 +1,23 @@
+app:
+  build: ./app
+  links:
+    - mongo
+    - redis
+  ports:
+    - "80:80"
+  environment:
+   - HOST_URL=http://heebiejeebies.herokuapp.com
+   - EXPRESS_SECRET=boom
+   - GOOGLE_CLIENT_ID=647442736142-o41lf5jguacr7isa77fdqoph846gvd4s.apps.googleusercontent.com
+   - GOOGLE_CLIENT_SECRET=hi7zkIer_ID3tY61QVw7Ssuq
+   - FACEBOOK_CLIENT_ID=1003827562963220
+   - FACEBOOK_CLIENT_SECRET=e5dfc54e9998c6634b354abc1d16e49a
+   - TWITTER_CONSUMER_KEY=hVqLlvG2fuCvENjull6nlAiGT
+   - TWITTER_CONSUMER_SECRET=DnncWm7sbfVyXLVIN4Epzj2qcOhe4Ff5Qcs5wzphR2teLwOo9o
+   - GOOGLE_MAPS_PUBLIC_API_SERVER_KEY=AIzaSyC-0948M7yma5ectlvOPIxN8l1T840y4J0
+
+redis:
+  build: ./redis
+
+mongo:
+  build: ./mongo

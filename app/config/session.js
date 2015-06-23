@@ -41,7 +41,7 @@ module.exports.session = {
   * session store that can be shared across multiple Sails.js servers        *
   ***************************************************************************/
 
-  // adapter: 'redis',
+  adapter: 'redis',
 
   /***************************************************************************
   *                                                                          *
@@ -52,12 +52,12 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // host: 'localhost',
-  // port: 6379,
-  // ttl: <redis session TTL in seconds>,
-  // db: 0,
+  host: 'redis',
+  port: 6379,
+  ttl: 24 * 60 * 60 * 30,
+  db: 0,
   // pass: <redis auth password>,
-  // prefix: 'sess:',
+  prefix: 'sess:',
 
 
   /***************************************************************************
@@ -66,14 +66,14 @@ module.exports.session = {
   * store                                                                    *
   *                                                                          *
   ***************************************************************************/
-  adapter: 'mongo',
-  url: process.env.MONGOLAB_URI,
-  // host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
-  // port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
-  // user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'username',
-  // password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'password',
-  db: 'heebie_sessions',
-  collection: 'sessions',
+  // adapter: 'mongo',
+  // url: 'mongodb://mongo:27017/test',
+  // // host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
+  // // port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
+  // // user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'username',
+  // // password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'password',
+  // db: 'heebie_sessions',
+  // collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *
