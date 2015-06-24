@@ -141,7 +141,7 @@ module.exports = {
    },
 
   /**
-   * CardController.delete()
+   * CardController.exportAllToCsv()
    */
 
   exportAllToCsv: function (req, res) {
