@@ -1,5 +1,7 @@
 # Heebie Jeebies card creator
 
+![image](https://cloud.githubusercontent.com/assets/2166114/8338734/5e8abcd6-1a78-11e5-8272-3a9593936f22.png)
+
 This is a [Sails](http://sailsjs.org) application with a Mongo database. You can login with Twitter, Facebook, or Google Plus. Once logged in, you can create 'cards' with unique URLs that you can share with anyone. You can also print your card(s) to add to your existing Heebie Jeebies card game.
 
 ## TODO
