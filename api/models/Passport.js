@@ -33,13 +33,17 @@ function hashPassword (passport, next) {
  */
 var Passport = {
   attributes: {
+    createdAt: { type: 'string', autoCreatedAt: true, },
+    updatedAt: { type: 'string', autoUpdatedAt: true, },
+    id: { type: 'string', columnName: '_id'},
+
     // Required field: Protocol
     //
     // Defines the protocol to use for the passport. When employing the local
     // strategy, the protocol will be set to 'local'. When using a third-party
     // strategy, the protocol will be set to the standard used by the third-
     // party service (e.g. 'oauth', 'oauth2', 'openid').
-    protocol: { type: 'alphanumeric', required: true },
+    protocol: { type: 'string', required: true },
 
     // Local fields: Password, Access Token
     //
@@ -62,7 +66,7 @@ var Passport = {
     // dards. When using OAuth 1.0, a `token` as well as a `tokenSecret` will
     // be issued by the provider. In the case of OAuth 2.0, an `accessToken`
     // and a `refreshToken` will be issued.
-    provider   : { type: 'alphanumericdashed' },
+    provider   : { type: 'string' },
     identifier : { type: 'string' },
     tokens     : { type: 'json' },
 
@@ -74,17 +78,6 @@ var Passport = {
     // For more information on associations in Waterline, check out:
     // https://github.com/balderdashy/waterline
     user: { model: 'User', required: true },
-
-    /**
-     * Validate password used by the local strategy.
-     *
-     * @param {string}   password The password to validate
-     * @param {Function} next
-     */
-    validatePassword: function (password, next) {
-      bcrypt.compare(password, this.password, next);
-    }
-
   },
 
   /**

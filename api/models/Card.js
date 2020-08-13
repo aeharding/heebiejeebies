@@ -9,13 +9,17 @@ module.exports = {
   schema: true,
 
   attributes: {
+    createdAt: { type: 'string', autoCreatedAt: true, },
+    updatedAt: { type: 'string', autoUpdatedAt: true, },
+    id: { type: 'string', columnName: '_id'},
+
     top: {
       type: 'string',
       required: true,
       maxLength: 300
     },
     smiley: {
-      type: 'integer',
+      type: 'number',
       required: true,
       min: 1,
       max: 10
@@ -35,7 +39,6 @@ module.exports = {
     },
     uid: {
       type: 'String',
-      primaryKey: true,
       required: true
     }
   }

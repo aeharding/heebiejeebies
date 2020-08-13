@@ -59,7 +59,7 @@ module.exports.passport = {
   },
 
   google: {
-    name: 'Google+',
+    name: 'Google',
     className: 'google-plus',
     protocol: 'oauth2',
     strategy: require('passport-google-oauth').OAuth2Strategy,

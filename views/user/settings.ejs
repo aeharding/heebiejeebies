@@ -1,14 +1,5 @@
 <h1>Settings</h1>
 
-<% if (success && success.length) {%>
-  <div class="success-alert">
-    <% success.forEach(function (oneSuccess) { %>
-      <span><%= __(oneSuccess) %></span>
-    <% }) %>
-  </div>
-  <br>
-<% } %>
-
 <form role="form" action="/user/settings" method="post">
   <label>
     Your location:<br>

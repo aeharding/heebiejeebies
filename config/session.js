@@ -32,7 +32,8 @@ module.exports.session = {
   ***************************************************************************/
 
   cookie: {
-    maxAge: 24 * 60 * 60 * 1000 * 30
+    maxAge: 24 * 60 * 60 * 1000 * 30,
+    secure: process.env.NODE_ENV === 'production'
   },
 
   /***************************************************************************
@@ -66,8 +67,8 @@ module.exports.session = {
   * store                                                                    *
   *                                                                          *
   ***************************************************************************/
-  adapter: 'mongo',
-  url: process.env.MONGOLAB_URI,
+  adapter: 'connect-mongo',
+  url: process.env.MONGO_URI,
   // host: process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost',
   // port: process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
   // user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'username',

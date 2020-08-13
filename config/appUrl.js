@@ -1,0 +1,1 @@
+module.exports.appUrl = process.env.HOST_URL

@@ -53,8 +53,8 @@ var AuthController = {
 
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
-    , errors    : req.flash('error')
+      providers : providers,
+      errors: []
     });
   },
 
@@ -79,27 +79,6 @@ var AuthController = {
     req.session.authenticated = false;
     
     res.redirect('/');
-  },
-
-  /**
-   * Render the registration page
-   *
-   * Just like the login form, the registration form is just simple HTML:
-   *
-      <form role="form" action="/auth/local/register" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign up</button>
-      </form>
-   *
-   * @param {Object} req
-   * @param {Object} res
-   */
-  register: function (req, res) {
-    res.view({
-      errors: req.flash('error')
-    });
   },
 
   /**
@@ -134,14 +113,14 @@ var AuthController = {
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
-      var flashError = req.flash('error')[0];
+      // var flashError = req.flash('error')[0];
 
-      if (err && !flashError ) {
-        req.flash('error', 'Error.Passport.Generic');
-      } else if (flashError) {
-        req.flash('error', flashError);
-      }
-      req.flash('form', req.body);
+      // if (err && !flashError ) {
+        // req.flash('error', 'Error.Passport.Generic');
+      // } else if (flashError) {
+        // req.flash('error', flashError);
+      // }
+      // req.flash('form', req.body);
 
       // If an error was thrown, redirect the user to the
       // login, register or disconnect action initiator view.

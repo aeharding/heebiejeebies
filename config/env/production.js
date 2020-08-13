@@ -11,6 +11,12 @@
  */
 
 module.exports = {
+  sockets: {
+    onlyAllowOrigins: [
+      'https://yourheebiejeebies.com',
+      'https://www.yourheebiejeebies.com'
+    ]
+  }
 
   /***************************************************************************
    * Set the default database connection for models in the production        *

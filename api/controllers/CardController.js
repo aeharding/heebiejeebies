@@ -55,7 +55,7 @@ module.exports = {
    */
   all: function (req, res) {
     Card.find({ author: req.user.id })
-      .sort({ createdAt: 'desc' })
+      .sort('createdAt DESC')
       .exec(
         function foundCards (err, cards) {
           if (err) return res.send(err, 500);
@@ -127,7 +127,7 @@ module.exports = {
         return res.forbidden('You are not permitted to perform this action.');
       }
 
-      card.destroy(function() {
+      Card.destroyOne({ uid: card.uid }).exec(function() {
         res.format({
           json: function() {
             return res.send(204);

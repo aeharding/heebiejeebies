@@ -3,9 +3,13 @@ var User = {
   schema: true,
 
   attributes: {
+    createdAt: { type: 'string', autoCreatedAt: true, },
+    updatedAt: { type: 'string', autoUpdatedAt: true, },
+    id: { type: 'string', columnName: '_id'},
+
     username    : { type: 'string', unique: true },
     displayName : { type: 'string' },
-    email       : { type: 'email',  unique: true },
+    email       : { type: 'string',  unique: true },
     passports   : { collection: 'Passport', via: 'user' },
     cards       : { collection: 'Card', via: 'author' },
     location    : { type: 'string', maxLength: 50 }

@@ -9,6 +9,10 @@ module.exports = {
   schema: true,
 
   attributes: {
+    createdAt: { type: 'string', autoCreatedAt: true, },
+    updatedAt: { type: 'string', autoUpdatedAt: true, },
+    id: { type: 'string', columnName: '_id'},
+
     uid: {
       type: 'string',
       required: true,

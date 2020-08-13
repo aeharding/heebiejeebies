@@ -33,8 +33,6 @@ module.exports.policies = {
   // Require user to be logged in by default
   '*': ['sessionAuth', 'passport', 'url'],
 
-  'StaticViewController': ['passport', 'url'],
-
   'auth': {
     '*': ['passport', 'url']
   },

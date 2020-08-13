@@ -29,17 +29,17 @@ exports.register = function (req, res, next) {
     , password = req.param('password');
 
   if (!email) {
-    req.flash('error', 'Error.Passport.Email.Missing');
+    // req.flash('error', 'Error.Passport.Email.Missing');
     return next(new Error('No email was entered.'));
   }
 
   if (!username) {
-    req.flash('error', 'Error.Passport.Username.Missing');
+    // req.flash('error', 'Error.Passport.Username.Missing');
     return next(new Error('No username was entered.'));
   }
 
   if (!password) {
-    req.flash('error', 'Error.Passport.Password.Missing');
+    // req.flash('error', 'Error.Passport.Password.Missing');
     return next(new Error('No password was entered.'));
   }
 
@@ -50,9 +50,9 @@ exports.register = function (req, res, next) {
     if (err) {
       if (err.code === 'E_VALIDATION') {
         if (err.invalidAttributes.email) {
-          req.flash('error', 'Error.Passport.Email.Exists');
+          // req.flash('error', 'Error.Passport.Email.Exists');
         } else {
-          req.flash('error', 'Error.Passport.User.Exists');
+          // req.flash('error', 'Error.Passport.User.Exists');
         }
       }
 
@@ -70,7 +70,7 @@ exports.register = function (req, res, next) {
     }, function (err, passport) {
       if (err) {
         if (err.code === 'E_VALIDATION') {
-          req.flash('error', 'Error.Passport.Password.Invalid');
+          // req.flash('error', 'Error.Passport.Password.Invalid');
         }
 
         return user.destroy(function (destroyErr) {
@@ -151,9 +151,9 @@ exports.login = function (req, identifier, password, next) {
 
     if (!user) {
       if (isEmail) {
-        req.flash('error', 'Error.Passport.Email.NotFound');
+        // req.flash('error', 'Error.Passport.Email.NotFound');
       } else {
-        req.flash('error', 'Error.Passport.Username.NotFound');
+        // req.flash('error', 'Error.Passport.Username.NotFound');
       }
 
       return next(null, false);
@@ -164,13 +164,13 @@ exports.login = function (req, identifier, password, next) {
     , user     : user.id
     }, function (err, passport) {
       if (passport) {
-        passport.validatePassword(password, function (err, res) {
+        bcrypt.compare(passport.password, password, function (err, res) {
           if (err) {
             return next(err);
           }
 
           if (!res) {
-            req.flash('error', 'Error.Passport.Password.Wrong');
+            // req.flash('error', 'Error.Passport.Password.Wrong');
             return next(null, false);
           } else {
             return next(null, user);
@@ -178,7 +178,7 @@ exports.login = function (req, identifier, password, next) {
         });
       }
       else {
-        req.flash('error', 'Error.Passport.Password.NotSet');
+        // req.flash('error', 'Error.Passport.Password.NotSet');
         return next(null, false);
       }
     });
