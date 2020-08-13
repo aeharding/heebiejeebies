@@ -21,14 +21,7 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-  middleware: {
-    requireHttps: function(req, res, next) {
-      if (!req.secure) {
-        return res.redirect('https://' + req.get('host') + req.url);
-      }
-
-      return next();
-    },
+  // middleware: {
 
   /***************************************************************************
   *                                                                          *
@@ -39,9 +32,9 @@ module.exports.http = {
 
     // order: [
     //   'startRequestTimer',
+    //   'requireHttps',
     //   'cookieParser',
     //   'session',
-    //   'myRequestLogger',
     //   'bodyParser',
     //   'handleBodyParserError',
     //   'compress',
@@ -78,7 +71,7 @@ module.exports.http = {
 
     // bodyParser: require('skipper')
 
-  },
+  // },
 
   /***************************************************************************
   *                                                                          *
