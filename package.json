@@ -45,7 +45,7 @@
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^1.2.0",
     "ssl-express-www": "^3.0.7",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install",
