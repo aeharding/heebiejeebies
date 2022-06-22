@@ -6,7 +6,7 @@
   "keywords": [],
   "dependencies": {
     "@sailshq/upgrade": "^1.0.9",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "bcryptjs": "^2.1.0",
     "bower": "^1.4.1",
     "connect-mongo": "2.0.3",
